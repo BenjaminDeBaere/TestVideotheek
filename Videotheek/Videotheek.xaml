@@ -1,0 +1,50 @@
+﻿<Window x:Class="Videotheek.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Videotheek"
+        mc:Ignorable="d"
+        Title="Videotheek" Height="400" Width="525" Loaded="Window_Loaded">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Left" Width="350">
+            <Label Content="Videotheek - Films" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="20"></Label>
+            <ListBox Height="120" Name="VideoListBox" SelectionChanged="VideoListBox_SelectionChanged" />
+            <Grid Margin="10" Name="infoGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Bandnr"></Label>
+                <TextBox Grid.Row="0" Grid.Column="1" Name="TextBoxBandNr" IsReadOnly="True" Width="75" HorizontalAlignment="Left" Text="{Binding ElementName=VideoListBox, Path=SelectedItem.BandNr, Mode=OneWay}" >                 
+                </TextBox>
+                <Label Grid.Row="1" Grid.Column="0" Content="Titel"></Label>
+                <TextBox Grid.Row="1" Grid.Column="1" Name="TextBoxTitel" HorizontalAlignment="Left" Width="250" Text="{Binding ElementName=VideoListBox, Path=SelectedItem.Titel}"></TextBox>
+                <Label Grid.Row="2" Grid.Column="0" Content="Genre"></Label>
+                <ComboBox Grid.Row="2" Grid.Column="1"  Name="GenreComboBox" />
+                <Label Grid.Row="3" Grid.Column="0" Content="In voorraad"></Label>
+                <TextBox Grid.Row="3" Grid.Column="1" Name="TextBoxInVoorraad" Width="75" HorizontalAlignment="Left" Text="{Binding ElementName=VideoListBox, Path=SelectedItem.InVoorraad}"></TextBox>
+                <Label Grid.Row="4" Grid.Column="0" Content="Uitgeleend"></Label>
+                <TextBox Grid.Row="4" Grid.Column="1" Name="TextBoxUitgeleend" Width="75" HorizontalAlignment="Left" Text="{Binding ElementName=VideoListBox, Path=SelectedItem.UitVoorraad}"></TextBox>
+                <Label Grid.Row="5" Grid.Column="0" Content="Prijs"></Label>
+                <TextBox Grid.Row="5" Grid.Column="1" Name="TextBoxPrijs" Width="75" HorizontalAlignment="Left" Text="{Binding ElementName=VideoListBox, Path=SelectedItem.Prijs}"></TextBox>
+                <Label Grid.Row="6" Grid.Column="0" Content="Totaal verhuurd"></Label>
+                <TextBox Grid.Row="6" Grid.Column="1" Name="TextBoxTotaalVerhuurd" Width="75" HorizontalAlignment="Left" Text="{Binding ElementName=VideoListBox, Path=SelectedItem.TotaalVerhuurd}"></TextBox>
+            </Grid>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Right" >
+            <Button Height="25" Content="Toevoegen" Margin="10,10,10,0" Name="ButtonToevoegen" Click="ButtonToevoegen_Click"></Button>
+            <Button Height="25" Content="Verwijderen" Margin="10,5,10,0" Name="ButtonVerwijderen" Click="ButtonVerwijderen_Click"></Button>
+            <Button Height="25" Content="Wijzigingen opslaan" Margin="10,20,10,0" Name="ButtonWijzigingenOpslaan" Click="ButtonWijzigingenOpslaan_Click"></Button>
+        </StackPanel>
+    </DockPanel>
+</Window>
